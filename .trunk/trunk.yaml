@@ -6,11 +6,11 @@ plugins:
     - id: trunk
       uri: https://github.com/trunk-io/plugins
       ref: v1.4.5
-
     - id: configs
       local: .
+      ref: v0.1
 # see plugin.yaml for enabled linters
-lint:
-  disabled:
-    - eslint
-#   enabled: []
+# lint:
+#   disabled:
+#     - eslint
+# #   enabled: []
