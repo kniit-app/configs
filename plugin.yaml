@@ -14,6 +14,11 @@ lint:
         - output: rewrite
           run: ${plugin}/todo-finder-parser.sh
           success_codes: [0, 1]
+    - name: prettier-plugin-svelte
+      files: [ALL]
+      # npm install prettier-plugin-svelte
+      runtime: node
+      package: prettier-plugin-svelte
   enabled:
     - shellcheck@0.10.0
     - shfmt@3.6.0
