@@ -13,7 +13,7 @@ lint:
         - output: parsable
           run: ${plugin}/todo-finder.sh
           success_codes: [0, 1]
-  enables:
+  enabled:
     - actionlint@1.7.1
     - bandit@1.7.9
     - black@24.4.2
