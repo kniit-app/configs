@@ -1,0 +1,14 @@
+cat >plugin.yaml <<EOF
+version: 0.1
+lint:
+  definitions:
+    - name: todo-finder
+      files: [ALL]
+      commands:
+        - output: parsable
+          run: grep --with-filename --line-number --ignore-case todo ${target}
+          success_codes: [0, 1]
+          read_output_from: stdout
+          parser:
+            run: "sed -E 's/(.*):([0-9]+):(.*)/\\1:\\2:0: [error] Found todo in \"\\3\" (found-todo)/'"
+EOF
