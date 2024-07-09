@@ -9,7 +9,7 @@ plugins:
       ref: v1.6.0
 
     - id: configs
-      local: ./
+      local: .
 
 # see plugin.yaml for enabled linters
 lint:
