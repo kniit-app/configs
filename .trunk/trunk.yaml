@@ -1,3 +1,4 @@
+---
 version: 0.1
 cli:
   version: 1.22.2
@@ -8,7 +9,7 @@ plugins:
       ref: v1.6.0
 
     - id: configs
-      local: .
+      local: ./
 
 # see plugin.yaml for enabled linters
 lint:

@@ -1,3 +1,4 @@
+---
 version: 0.1
 cli:
   version: 1.22.2
@@ -16,15 +17,23 @@ lint:
         - output: rewrite
           run: ${plugin}/todo-finder-parser.sh
           success_codes: [0, 1]
-    # - name: prettier-plugin-svelte
-    #   files: [typescript, javascript, svelte]
-    #   # npm install prettier-plugin-svelte
-    #   runtime: node
-    #   package: prettier-plugin-svelte
-    #   success_codes: [0, 1]
-    #   type:
+    - name: prettier
+      files:
+        - typescript
+        - yaml
+        - css
+        - postcss
+        - sass
+        - html
+        - markdown
+        - json
+        - javascript
+        - graphql
+        - prettier_supported_configs
+      extra_packages: [prettier-plugin-svelte]
 
   enabled:
+    - prettier@3.3.2
     - shellcheck@0.10.0
     - shfmt@3.6.0
     - actionlint@1.7.1
@@ -35,7 +44,6 @@ lint:
     - git-diff-check
     - isort@5.13.2
     - markdownlint@0.41.0
-    - prettier@3.3.2
     - pylint@3.2.5
     - ruff@0.5.1
     - trivy@0.52.2
