@@ -12,9 +12,6 @@ plugins:
       local: .
 
 # see plugin.yaml for enabled linters
-lint:
-  disabled:
-    - eslint
 #   enabled: []
 actions:
   enabled:
