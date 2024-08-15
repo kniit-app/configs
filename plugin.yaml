@@ -31,6 +31,11 @@ lint:
         - graphql
         - prettier_supported_configs
       extra_packages: [prettier-plugin-svelte]
+    - name: pylint
+      files: [python]
+      environment:
+        - name: PYTHONPATH
+          list: ["${workspace}"]
 
   enabled:
     - prettier@3.3.2
