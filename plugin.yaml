@@ -9,11 +9,10 @@ runtimes:
       linter_environment:
         - name: PYTHONPATH
           list:
-            [
-              "/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin/python3.10",
-            ]
+            - "/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin/python3.10"
         - name: VIRTUAL_ENV
-          list: ["/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin"]
+          list:
+            - "/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin"
       runtime_environment:
         - name: HOME
           value: ${home}
