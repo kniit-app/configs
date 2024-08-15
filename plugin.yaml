@@ -40,7 +40,10 @@ lint:
               "/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin/python3.10",
             ]
         - name: VIRTUAL_ENV
-          list: ["/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev"]
+          list:
+            [
+              "/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/lib/python3.10/site-packages",
+            ]
 
   enabled:
     - prettier@3.3.3
