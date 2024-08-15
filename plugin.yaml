@@ -4,18 +4,6 @@ cli:
   version: 1.22.2
 
 runtimes:
-  definitions:
-    - type: python
-      linter_environment:
-        - name: VIRTUAL_ENV
-          list:
-            - "/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin"
-      runtime_environment:
-        - name: HOME
-          value: ${home}
-        - name: PATH
-          list:
-            - ${runtime}/bin
   enabled:
     - go@1.21.0
     - node@22.4.0
