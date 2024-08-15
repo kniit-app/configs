@@ -4,6 +4,22 @@ cli:
   version: 1.22.2
 
 runtimes:
+  definitions:
+    - type: python
+      linter_environment:
+        - name: PYTHONPATH
+          list:
+            [
+              "/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin/python3.10",
+            ]
+        - name: VIRTUAL_ENV
+          list: ["/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin"]
+      runtime_environment:
+        - name: HOME
+          value: ${home}
+        - name: PATH
+          list:
+            - ${runtime}/bin
   enabled:
     - go@1.21.0
     - node@22.4.0
@@ -31,16 +47,6 @@ lint:
         - graphql
         - prettier_supported_configs
       extra_packages: [prettier-plugin-svelte]
-    - name: pylint
-      files: [python]
-      environment:
-        - name: PYTHONPATH
-          list:
-            [
-              "/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin/python3.10",
-            ]
-        - name: VIRTUAL_ENV
-          list: ["/home/alwi/Entwicklung/KNIIT/kniit_hub/env_kniit_dev/bin"]
 
   enabled:
     - prettier@3.3.3
