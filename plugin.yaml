@@ -37,7 +37,6 @@ lint:
         - typescript
         - yaml
         - css
-        - postcss
         - sass
         - html
         - markdown
