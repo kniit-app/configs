@@ -14,6 +14,8 @@ runtimes:
           list: ["${home}/env_kniit_dev/bin", "${runtime}/bin"]
         - name: PYTHONPATH
           value: "${home}/env_kniit_dev/lib/python3.10/site-packages"
+        - name: VIRTUAL_ENV
+          value: "${home}/env_kniit_dev"
 
 lint:
   definitions:
