@@ -1,30 +1,32 @@
 ---
 version: 0.1
 cli:
-  version: 1.22.2
+  version: 1.22.3
 
 runtimes:
-  definitions:
-    - type: python
-      version: 3.10.8
-      runtime_environment:
-        - name: HOME
-          value: ${home}
-        - name: PATH
-          list: ["${home}/env_kniit_dev/bin", "${runtime}/bin"]
-        - name: PYTHONPATH
-          value: "${home}/env_kniit_dev/lib/python3.10/site-packages"
-        - name: VIRTUAL_ENV
-          value: "${home}/env_kniit_dev"
+  enabled:
+    - node@22.6.0
+    - python@3.10.8
 
 lint:
+  threshold:
+    - linters: [todo-finder]
+      level: None
   definitions:
     - name: todo-finder
-      files: [shell]
+      files:
+        - python
+        - typescript
       commands:
-        - output: rewrite
-          run: ${plugin}/todo-finder-parser.sh
+        - output: regex
+          run: grep --with-filename --line-number --ignore-case todo ${target}
           success_codes: [0, 1]
+          parse_regex: "((?P<path>.*):(?P<line>\\d+):(?P<col>\\d+):
+            \\[(?P<severity>.*)\\] (?P<message>.*) \\((?P<code>.*)\\))"
+          read_output_from: stdout
+          parser:
+            run: "sed -E 's/(.*):([0-9]+):(.*)/\\1:\\2:0:
+              [error] Found todo in \"\\3\" (found-todo)/'"
     - name: prettier
       files:
         - typescript
@@ -37,6 +39,7 @@ lint:
         - javascript
         - graphql
         - prettier_supported_configs
+        - svelte
       extra_packages: [prettier-plugin-svelte]
   enabled:
     - prettier@3.3.3
@@ -46,12 +49,19 @@ lint:
     - bandit@1.7.9
     - black@24.8.0
     - checkov@3.2.225
-    - eslint@9.9.0
     - git-diff-check
     - isort@5.13.2
     - markdownlint@0.41.0
-    - pylint@3.2.6
     - ruff@0.5.7
-    - trivy@0.54.1
+    - trivy@0.54.1:
+        commands: [config, fs-vuln, fs-secret]
     - trufflehog@3.81.8
     - yamllint@1.35.1
+    - todo-finder
+
+actions:
+  enabled:
+    - trunk-announce
+    - trunk-check-pre-push
+    - trunk-fmt-pre-commit
+    - trunk-upgrade-available
