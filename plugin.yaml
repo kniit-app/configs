@@ -40,7 +40,6 @@ lint:
         - javascript
         - graphql
         - prettier_supported_configs
-        - svelte
       extra_packages: [prettier-plugin-svelte]
   enabled:
     - prettier@3.3.3
