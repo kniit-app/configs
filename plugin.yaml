@@ -53,6 +53,7 @@ lint:
     - isort@5.13.2
     - markdownlint@0.41.0
     - ruff@0.6.7
+    - taplo@0.9.3
     - trivy@0.55.2:
         commands: [config, fs-vuln, fs-secret]
     - trufflehog@3.82.2
